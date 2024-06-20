@@ -122,7 +122,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :UndotreeToggle<CR>:wincmd p<CR>
 
 "Raccourci terminal
-nnoremap <F5> :call OpenResizableTerminals(input('Taille du terminal : ', '10'))<CR>
+nnoremap <F5> :call OpenResizableTerminals(input('Size of terminal : ', '10'))<CR>
 tnoremap <F6> <c-w>N
 
 "Raccourci vers une recherche duckduckgo
@@ -142,10 +142,10 @@ nnoremap ² :call ClosePluginList()<CR>
 
 "Raccourci au lancement de vim
 au VimEnter *.cpp :NERDTreeToggle
-au VimEnter *.cpp :call OpenResizableTerminals(input('Taille du terminal : ', '10'))
+au VimEnter *.cpp :call OpenResizableTerminals(input('Size of terminal : ', '10'))
 
 au VimEnter *.ino :NERDTreeToggle
-au VimEnter *.ino :call OpenResizableTerminals(input('Taille du terminal : ', '10'))
+au VimEnter *.ino :call OpenResizableTerminals(input('Size of terminal : ', '10'))
 
 " Exécuter la commande :PluginUpdate en arrière-plan chaque fois que Vim est ouvert
 au VimEnter * silent! execute ':PluginUpdate | redraw!'
@@ -173,25 +173,25 @@ endfunction
 
 " Fonction pour la création d'un nouvel onglet
 function! OpenFileInNewTab()
-    let user_choice = input("Voulez-vous ouvrir un fichier existant ? (o/n): ")
+    let user_choice = input("Do you want to open exist file ? (o/n): ")
     if user_choice == 'o'
-        let file_name = input("Choisir un fichier à ouvrir : ", '', 'file')
+        let file_name = input("Choose file to open : ", '', 'file')
         if filereadable(file_name)
             execute "tabnew " . fnameescape(file_name)
         else
-            echo "Le fichier spécifié n'existe pas : " . file_name
+            echo "File doesnt exist : " . file_name
         endif
     elseif user_choice == 'n'
-        let new_file = input("Nouveau nom de fichier : ")
+        let new_file = input("New name for file : ")
         execute "tabnew " . new_file
     else
-        echo "\nChoix invalide. Veuillez saisir 'o' pour ouvrir un fichier existant, ou 'n' pour créer un fichier."
+        echo "\nInvalid choice. Please enter 'o' to open an existing file, or 'n' to create a new file.."
     endif
 endfunction
 
 " Configuration de la page d'accueil vim
 let g:startify_lists = [
-    \ {'type': 'files', 'header': ['Fichiers récents']},
+    \ {'type': 'files', 'header': ['Recent files']},
     \ ]
 let g:startify_custom_header =
        \ startify#center(split(system('figlet -w 100 VIMSCODE'), '\n'))
@@ -202,18 +202,18 @@ nnoremap <c-l> :WhichKey '<Space>'<CR>
 set timeoutlen=20
 let g:which_key_map = {
       \ 'name' : 'Raccourcis VimsCode' ,
-      \ '<F2>' : ['<F2>'     , 'fait apparaitre une note']           ,
-      \ '<F3>' : ['<F3>'     , 'fait apparaitre l arborescence']     ,
-      \ '<F4>' : ['<F4>'     , 'historique de modification']         ,
-      \ '<F5>' : ['<F5>'     , 'fait apparaitre un terminal']        ,
-      \ '<F5> souris' : [''     , 'redimensionnable avec la souris']    ,
-      \ '<F6>' : [''     , 'scroll dans le terminal']            ,
-      \ '<F7>' : ['<F7>'     , 'fait apparaitre un site aide']       ,
-      \ '<F8>' : ['<F8>'     , 'créer/ouvre une nouvel fenetre']     ,
-      \ '<F9>' : ['<<F9>'     , 'change de fenetre']                  ,
-      \ '<F10>' : ['<F10>'    , 'ferme VimsCode']                    ,
-      \ 'Ctrl-a' : ['<c-a>'  , 'divise en deux vim']              ,
-      \ '²' : ['²'    , 'affiche les greffons']                  ,
+      \ '<F2>' : ['<F2>'     , 'displays a note']           ,
+      \ '<F3>' : ['<F3>'     , ' brings up the tree structure']     ,
+      \ '<F4>' : ['<F4>'     , '  edit history']         ,
+      \ '<F5>' : ['<F5>'     , ' brings up a terminal']        ,
+      \ '<F5> souris' : [''     , 'resizable with mouse']    ,
+      \ '<F6>' : [''     , 'scroll in terminal']            ,
+      \ '<F7>' : ['<F7>'     , 'brings up a french help site']       ,
+      \ '<F8>' : ['<F8>'     , 'create/open a new window']     ,
+      \ '<F9>' : ['<<F9>'     , 'change window']                  ,
+      \ '<F10>' : ['<F10>'    , 'close VimsCode']                    ,
+      \ 'Ctrl-a' : ['<c-a>'  , 'divide into two vim']              ,
+      \ '²' : ['²'    , 'display plugins']                  ,
       \ }
 let g:which_key_map.a = {
       \ 'name' : 'Raccourcis Vim' ,
