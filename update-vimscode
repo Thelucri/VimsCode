@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf ~/.vim/help ~/.vim/ide-cli ~/.vim/vimscode.sh
+rm -rf ~/.vimrc
+git clone https://git.cohabit.fr/bastien/VimsCode.git
+cd Vimscode 
+mv help ide-cli vimscode.sh
+mv vimrc-conf ~/.vimrc
+echo "mise à jour terminé, lancer vim"
+

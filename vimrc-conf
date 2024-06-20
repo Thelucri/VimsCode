@@ -1,0 +1,232 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+"Plugins installés depuis Vim Awesome avec le gestionnaire Vundle
+Plugin 'preservim/nerdtree'
+Plugin 'mbbill/undotree'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'jodosha/vim-devnotes'
+Plugin 'joshdick/onedark.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-commentary'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'liuchengxu/vim-which-key'
+Plugin 'mhinz/vim-startify'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Active les raccourcis clavier pour fzf
+nnoremap <C-p> :FZF<CR>
+nnoremap <S-f> :Rg<CR>
+nnoremap <S-b> :Buffers<CR>
+nnoremap <S-m> :Marks<CR>
+nnoremap <S-t> :Tags<CR>
+
+"Parametre de vim
+syntax on
+set smartindent
+set shiftwidth=2
+set wildmenu
+set cursorline
+set ignorecase
+set hlsearch
+set mouse=a
+set expandtab
+set tabstop=2
+
+" Configurer Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
+
+" Stocker le nom d'utilisateur dans une variable
+let g:username = substitute(system('whoami'), '\n', '', '')
+
+" Fonction pour mapper les modes
+function! Mode()
+  let mode = mode()
+  if mode ==# 'n'
+    return 'NORMAL'
+  elseif mode ==# 'i'
+    return 'INSERT'
+  elseif mode ==# 'v'
+    return 'VISUAL'
+  elseif mode ==# "\<C-V>"
+    return 'VISUAL BLOCK'
+  elseif mode ==# 'V'
+    return 'VISUAL LINE'
+  elseif mode ==# 'R'
+    return 'REPLACE'
+  else
+    return mode()
+  endif
+endfunction
+
+" Configurer les sections personnalisées dans la barre d'état
+let g:airline_section_a = '%<%{Mode()}'
+let g:airline_section_b = '%#StatusLine#' . g:username . ' | %f' 
+let g:airline_section_c = '%#StatusLineNC#%{strftime("%H:%M")}'
+
+" Configurer les symboles de séparation
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+
+" Configurer les couleurs
+hi StatusLine guifg=#ebdbb2 guibg=#3c3836 gui=NONE ctermfg=180 ctermbg=237 cterm=NONE
+hi StatusLineNC guifg=#928374 guibg=#3c3836 gui=NONE ctermfg=146 ctermbg=237 cterm=NONE
+hi User1 guifg=#282828 guibg=#98971a gui=NONE ctermfg=234 ctermbg=142 cterm=NONE
+hi User2 guifg=#928374 guibg=NONE gui=NONE ctermfg=146 ctermbg=NONE cterm=NONE
+hi User3 guifg=#d5c4a1 guibg=#3c3836 gui=NONE ctermfg=223 ctermbg=237 cterm=NONE
+hi User4 guifg=#1d2021 guibg=NONE gui=NONE ctermfg=234 ctermbg=NONE cterm=NONE
+hi User5 guifg=#689d6a guibg=NONE gui=NONE ctermfg=108 ctermbg=NONE cterm=NONE
+hi User6 guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+
+" Activer auto-pairs
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+au FileType * let b:AutoPairs = AutoPairsDefine({'(':')', '[':']', '{':'}', '"':'"', "'":"'", '`':'`'})
+
+"Numérotation avec numbertoggle
+set number relativenumber
+
+"Theme vim
+colorscheme space-vim-dark
+
+"Permet la sauvegarde automatique de l'historique...
+set undofile
+set undodir=~/.vim/
+
+"Raccourci vertical split
+nnoremap <c-a> :vsp<CR>
+
+"Raccourci Note
+nmap <F2> :call DevNotes()<CR>
+
+"Raccourci NerdTree
+nnoremap <F3> :NERDTreeToggle<CR>
+
+"Raccourci historique
+nnoremap <F4> :UndotreeToggle<CR>:wincmd p<CR>
+
+"Raccourci terminal
+nnoremap <F5> :call OpenResizableTerminals(input('Taille du terminal : ', '10'))<CR>
+tnoremap <F6> <c-w>N
+
+"Raccourci vers une recherche duckduckgo
+vmap g :<C-U> !firefox "https://duckduckgo.com/?q=<cword>&t=newext&atb=v372-6&ia=web" >& /dev/null <CR><CR>
+
+"Raccourci vers aide vim
+nmap <F7> :!elinks https://agreugr.eu<CR>
+
+"Raccourci onglet
+nnoremap <F8> :call OpenFileInNewTab()<CR>
+nmap <F9> :tabnext<CR>
+
+nnoremap <F10> :call SaveAndQuit()<CR>
+
+"Raccourci plugin installer
+nnoremap ² :call ClosePluginList()<CR>
+
+"Raccourci au lancement de vim
+au VimEnter *.cpp :NERDTreeToggle
+au VimEnter *.cpp :call OpenResizableTerminals(input('Taille du terminal : ', '10'))
+
+au VimEnter *.ino :NERDTreeToggle
+au VimEnter *.ino :call OpenResizableTerminals(input('Taille du terminal : ', '10'))
+
+" Exécuter la commande :PluginUpdate en arrière-plan chaque fois que Vim est ouvert
+au VimEnter * silent! execute ':PluginUpdate | redraw!'
+
+" Sauvegarde et Fermeture de vimscode
+function! SaveAndQuit()
+    wa
+    qall!
+endfunction
+
+" Fermeture ou ouverture du pluginlisst
+function! ClosePluginList()
+  if &buftype == 'help' && expand('%:t') == 'PluginList'
+    quit
+  else
+    :PluginList
+  endif
+endfunction
+
+" Configuration du terminal extensible
+function! OpenResizableTerminals(size)
+    let size_arg = a:size != '' ? '++rows=' . a:size : ''
+    execute 'bot term ' . size_arg
+endfunction
+
+" Fonction pour la création d'un nouvel onglet
+function! OpenFileInNewTab()
+    let user_choice = input("Voulez-vous ouvrir un fichier existant ? (o/n): ")
+    if user_choice == 'o'
+        let file_name = input("Choisir un fichier à ouvrir : ", '', 'file')
+        if filereadable(file_name)
+            execute "tabnew " . fnameescape(file_name)
+        else
+            echo "Le fichier spécifié n'existe pas : " . file_name
+        endif
+    elseif user_choice == 'n'
+        let new_file = input("Nouveau nom de fichier : ")
+        execute "tabnew " . new_file
+    else
+        echo "\nChoix invalide. Veuillez saisir 'o' pour ouvrir un fichier existant, ou 'n' pour créer un fichier."
+    endif
+endfunction
+
+" Configuration de la page d'accueil vim
+let g:startify_lists = [
+    \ {'type': 'files', 'header': ['Fichiers récents']},
+    \ ]
+let g:startify_custom_header =
+       \ startify#center(split(system('figlet -w 100 VIMSCODE'), '\n'))
+
+" Configuration WhichKey
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <c-l> :WhichKey '<Space>'<CR>
+set timeoutlen=20
+let g:which_key_map = {
+      \ 'name' : 'Raccourcis VimsCode' ,
+      \ '<F2>' : ['<F2>'     , 'fait apparaitre une note']           ,
+      \ '<F3>' : ['<F3>'     , 'fait apparaitre l arborescence']     ,
+      \ '<F4>' : ['<F4>'     , 'historique de modification']         ,
+      \ '<F5>' : ['<F5>'     , 'fait apparaitre un terminal']        ,
+      \ '<F5> souris' : [''     , 'redimensionnable avec la souris']    ,
+      \ '<F6>' : [''     , 'scroll dans le terminal']            ,
+      \ '<F7>' : ['<F7>'     , 'fait apparaitre un site aide']       ,
+      \ '<F8>' : ['<F8>'     , 'créer/ouvre une nouvel fenetre']     ,
+      \ '<F9>' : ['<<F9>'     , 'change de fenetre']                  ,
+      \ '<F10>' : ['<F10>'    , 'ferme VimsCode']                    ,
+      \ 'Ctrl-a' : ['<c-a>'  , 'divise en deux vim']              ,
+      \ '²' : ['²'    , 'affiche les greffons']                  ,
+      \ }
+let g:which_key_map.a = {
+      \ 'name' : 'Raccourcis Vim' ,
+      \ 'Ctrl-w-w'     : ['<C-W>w'     , 'other-window']          ,
+      \ 'Ctrl-w-c'     : ['<C-W>c'     , 'delete-window']         ,
+      \ 'Ctrl-w-s'     : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'Ctrl-w-v'     : ['<C-W>v'     , 'split-window-right']    ,
+      \ 'Ctrl-w-h'     : ['<C-W>h'     , 'window-left']           ,
+      \ 'Ctrl-w-j'     : ['<C-W>j'     , 'window-below']          ,
+      \ 'Ctrl-w-l'     : ['<C-W>l'     , 'window-right']          ,
+      \ 'Ctrl-w-k'     : ['<C-W>k'     , 'window-up']             ,
+      \ ':resize +5' : [':resize +5'  , 'expand-window-below']    ,
+      \ ':resize -5' : [':resize -5'  , 'expand-window-up']       ,
+      \ 'Ctrl-w-='     : ['<C-W>='     , 'balance-window']        ,
+      \ }
+
