@@ -1,0 +1,60 @@
+Raccourcis VimsCode : 
+<F2> Invoque une note vim
+<F3> Invoque l'arborescence du dossier ou vous vous trouvez
+<F4> Invoque l'historique des modifications effectué
+<F5> Invoque un terminal en bas
+<F6> Permet de scroll dans le terminal 
+<F7> Invoque un site d'aide pour vim et terminal
+<F8> Créer un nouvel onglet vim
+<F9> Navigue entre les onglets vim
+
+
+Aide pour ESP32 :
+
+add-dependency               # Ajout de dépendance.
+all                          # Alias de build, construit le projet.
+app                          # Construit uniquement l'app.
+app-flash                    # Flash uniquement l'app.
+bootloader                   # Construit uniquement le bootloader.
+bootloader-flash             # Flash uniquement le bootloader.
+build-system-targets         # Affiche la liste des cibles systèmes.
+clean                        # Supprime les fichiers de sortie de la compilation.
+compote component delete     # Supprime la version spécifié du composant du registre des composants.
+compote component upload     # Télécharge un composant dans le registre de composant.
+compote component upload-status # Vérifie les composants de l'état du téléchargement par l'ID du travail.
+confserver                   # Exécute la configuration JSON du serveur.
+coredump-debug               # Créer le fichier ELF de vidage du noyau et éxecute la session de débogage GDB avec ce fichier.
+coredump-info                # Affiche le registre des erreurs.
+create-component             # Créer un nouveau composant.
+create-manifest              # Créer un manifeste pour spécifié les composants.
+create-project               # Créer un nouveau projet.
+create-project-from-example  # Créer un nouveau projet exemple.
+docs                         # Ouvre un navigateur avec la documentation.
+efuse-common-table           # Génére un c-source pour le champ de l'idf efuse.
+efuse-custom-table           # Génére un c-source pour le champ de l'utilisateur efuse.
+encrypted-app-flash          # Flash uniquement l'app chiffré.
+encrypted-flash              # Flash uniquement le projet chiffré.
+erase-flash                  # Ecrase toute la puce flash.
+erase-otadata                # Ecrase les données totales de la partition.
+flash                        # Flash le projet.
+fullclean                    # Supprime l'intégralité du contenu du dossier de construction.
+gdb                          # Exécute GDB.
+gdbgui                       # Interface utilisateur GDB dans le navigateur par defaut.
+gdbtui                       # Mode TUI GDB.
+menuconfig                   # Exécute le "menuconfig" de la configuration d'outil du projet. 
+monitor                      # Affiche la sortie sérial.
+openocd                      # Exécute openocd depuis le chemin courant.
+partition-table              # Construit uniquement une table de partition.
+partition-table-flash        # Flash uniquement la table de partition.
+post-debug                   # Cible l'utilitaire pour lire la sortie de l'action de débogage asynchrone et les arrêter.
+python-clean                 # Supprime le code d'octet python généré du dossier IDF.
+read-otadata                 # Lire les données totales de la partition.
+reconfigure                  # Ré-exécute CMake
+save-defconfig               # Génére sdkconfig.defaults avec une option différente par defaut.
+set-target                   # Cible l'ensemble de la construction de la carte.
+show-efuse-table             # Affiche la table efuse.
+size                         # Affiche les informations de taille de base apropos de l'app.
+size-components              # Affiche les informations de tailles par composant.
+size-files                   # Affiche les informations de tailles par fichier source.
+uf2                          # Génére le binaire UF2 avec tous les binaires inclus.
+uf2-app                      # Génére le binaire UF2 pour l'app uniquement.

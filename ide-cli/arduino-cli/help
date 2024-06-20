@@ -1,0 +1,9 @@
+# exec arduino-cli
+mv arduino-cli /usr/bin
+
+
+
+# autocomplétion arduino-cli
+mkdir /etc/bash_completion.d/                     or                     mkdir ~/completion_zsh/
+add fpath=($HOME/completion_zsh $fpath) at the beginning of your ~/.zshrc file   # only if you use zsh
+mv arduino-cli.sh /etc/bash_completion.d/         or                     mv _arduino-cli ~/completion_zsh/

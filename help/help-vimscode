@@ -1,0 +1,21 @@
+VIM - Vi IMproved 8.2 - VIMSCODE - IDE Vim 1.0
+
+VimsCode Arguments :
+
+   -a Load VimsCode with arduino help
+   -e Load VimsCode with esp32 help
+   -p Load VimsCode with platform.io help
+
+VimsCode shortcuts :
+
+   <F2> Shows a vim note
+   <F3> Shows the tree structure
+   <F4> Shows the history of changes made
+   <F5> Shows a terminal at the bottom
+   <F6> Allows scrolling in the terminal
+   <F7> Brings up a help site for vim and terminal
+   <F8> created a new vim tab
+   <F9> navigate between vim tabs
+   <c-s> vertical split of the window
+   <F10> <F10> close vimscode
+

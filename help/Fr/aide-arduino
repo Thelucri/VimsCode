@@ -1,0 +1,120 @@
+Raccourcis VimsCode : 
+	<F2> invoque une note vim
+	<F3> invoque l'arborescence du dossier ou vous vous trouvez
+	<F4> invoque l'historique des modifications effectué
+	<F5> invoque un terminal en bas
+	<F6> permet de scroll dans le terminal 
+	<F7> invoque un site d'aide pour vim et terminal
+	<F8> créé un nouvel onglet vim
+	<F9> navigue entre les onglets vim
+	
+	Aide pour arduino :
+	
+	arduino-cli board 	 											# Affiche les commandes de la arduino
+										attach                  # Attache un projet à une carte
+										details                 # Affiche des détails sur la carte
+										list                    # Listes les cartes connectés
+										listall                 # Listes toutes les cartes connus et leur correspondance FQBN
+										search                  # Cherche dans la carte dans le getionnaires de carte
+	
+	arduino-cli burn-bootloader               # Télécharge le bootloader
+	
+	arduino-cli cache clean                   # Efface le cache
+	
+	arduino-cli compile                       # Permet de compiler le programme sur la carte
+	
+	arduino-cli config                        # Permet d'avoir les commandes de configurations arduino
+										 add                    # Ajoute une autre valeur à un réglage
+										 delete                 # Supprime un paramètre et ces sous paramètres
+										 dump                   # Affiche les paramètres actuels
+										 init                   # Crée un projet
+										 remove                 # Supprime une ou plusieurs valeurs d'un paramètres
+										 set                    # Définit une valeur à un paramètre
+	
+	arduino-cli core                          # Permet de faire une opérations sur le coeur arduino
+									 download                 # Télécharge un ou plusieurs coeurs et touts les outils dépendants
+									 install                  # Installe un ou plusieurs coeurs et touts les outils dépendants
+									 list                     # Affiche la liste des platformes installés
+									 search                   # Cherche un coeur dans la gestionnaire de carte
+									 uninstall                # Désinstalle un ou plusieurs coeurs et touts les outils dépendants
+									 update-index             # Met à jour l'index des coeurs
+									 upgrade                  # Met à jour un ou plusieurs platformes
+	
+	arduino-cli debug                         # Permet de debug
+	
+	arduino-cli help                          # Affiche l'aide arduino
+	
+	arduino-cli lib                           # Permet d'afficher la liste des commandes apropos des librairies
+									deps                      # Regarde le status d'une dépendance pour une librairies spécifique
+									download                  # Télécharge une ou plusieurs librairies sans l'installer
+									examples                  # Affiche les exemples de librairies
+									install                   # Installe une ou plusieurs librairies dans le système
+									list                      # Affiche les librairies installés
+									search                    # Recherche une ou plusieurs données de librairies
+									uninstall                 # Désinstalle une ou plusieurs librairies
+									update-index              # Met à jour l'index des librairies
+									upgrade                   # Met à jour toutes les librairies installés
+	
+	arduino-cli monitor                                  # Permet d'ouvrir un port de communication avec carte
+	arduino-cli monitor -p /dev/ttyaCM0 --describe       # Exemple
+											--board-options strings          # Listes les options
+									    --config strings ou -c           # Configure un port
+											--describe                       # Affiche tous les paramètres du port de communication
+											--discovery-timeout "durée"      # Permet de choisir le temps pour découvrir un port
+											--fqbn string ou -b              # Permet de changer le nom de la carte
+											--help ou -h                     # Invoque l'aide
+											--port string ou -p              # Permet de changer l'adresse du port
+											--protocol string ou -l          # Permet de changer le protocol
+											--quiet ou -q                    # Affiche seulement le moniteur d'entré et de sortie
+	
+	arduino-cli outdated                # Liste les coeurs et librairies qui peuvent être mis à jour
+	
+	arduino-cli sketch                  # Permet de créer/archiver un projet arduino
+										 archive          # Créer une archive du projet
+										 new              # Créer un nouveau projet
+	
+	arduino-cli update                  # Met à jour l'index des coeurs et librairies
+	
+	arduino-cli upgrade                 # Met à jour les coeurs et librairies installés
+	
+	arduino-cli upload                  # Télécharge un projet arduino
+	
+	arduino-cli version                 # Affiche la version de arduino-cli
+	
+	
+	
+	
+	arguments supplémentaires valide pour toutes les commandes ci-dessus :
+	
+	      --config-file string          # Permet de choisir un fichier de configuration personnalisé
+	      --format string               # Permet de choisir le format de sortir des logs
+	      --log-file string             # Permet de choisir à quel endroit les logs sont stockés
+	      --verbose ou -v               # Permet de donner plus d'informations
+	
+	Exemple d'utilisatio simple : 
+	
+	# Pour connecter des nouveaux index télécharger
+	
+	arduino-cli core update-index
+	
+	# Pour lister toutes les cartes connectées
+	
+	arduino-cli board list
+	
+	# Pour installer un coeur, un exemple avec samd mais on peut le faire avec avr (pour savoir regarder le FQBN de la carte)
+	
+	arduino-cli core install arduino:samd
+	
+	# Pour voir les coeurs installés
+	
+	 arduino-cli core list
+	
+	# Pour compiler
+	
+	arduino-cli compile --fqbn "FQBN de la carte" "nom du fichier"
+	arduino-cli compile --fqbn arduino:samd:mkr1000 MyFirstSketch         # Exemple
+	
+	# Pour téléverser
+	
+	arduino-cli upload -p /dev/ttyACM0 --fqbn "FQBN de la carte" "nom du fichier"
+	                           ttyUSB0

@@ -1,0 +1,59 @@
+Short-cute VimsCode : 
+<F2> launch a vim note
+<F3> launch the folder tree where you are
+<F4> launch the change history
+<F5> launch a terminal at the bottom
+<F6> scroll through terminal 
+<F7> launch a help site for vim and terminal
+<F8> created a new vim tab 
+<F9> navigates between vim tabs
+
+Help for ESP32 :
+
+add-dependency               # Add dependency to the manifest file.
+all                          # Aliases: build. Build the project.
+app                          # Build only the app.
+app-flash                    # Flash the app only.
+bootloader                   # Build only bootloader.
+bootloader-flash             # Flash bootloader only.
+build-system-targets         # Print list of build system targets.
+clean                        # Delete build output files from the build directory.
+compote component delete     # Delete specified version of the component from the component registry.
+compote component upload     # Upload component to the component registry.
+compote component upload-status # Check the component uploading status by the job ID.
+confserver                   # Run JSON configuration server.
+coredump-debug               # Create core dump ELF file and run GDB debug session with file.
+coredump-info                # Print crashed task’s registers.
+create-component             # Create a new component.
+create-manifest              # Create manifest for specified component.
+create-project               # Create a new project.
+create-project-from-example  # Create a project from an example.
+docs                         # Open web browser with documentation for ESP-IDF.
+efuse-common-table           # Generate C-source for IDF's eFuse fields.
+efuse-custom-table           # Generate C-source for user's eFuse fields.
+encrypted-app-flash          # Flash the encrypted app only.
+encrypted-flash              # Flash the encrypted project.
+erase-flash                  # Erase entire flash chip.
+erase-otadata                # Erase otadata partition.
+flash                        # Flash the project.
+fullclean                    # Delete the entire build directory contents.
+gdb                          # Run the GDB.
+gdbgui                       # GDB UI in default browser.
+gdbtui                       # GDB TUI mode.
+menuconfig                   # Run "menuconfig" project configuration tool. 
+monitor                      # Display serial output.
+openocd                      # Run openocd from current path.
+partition-table              # Build only partition table.
+partition-table-flash        # Flash partition table only.
+post-debug                   # Utility target to read the output of async debug action and stop them.
+python-clean                 # Delete generated Python byte code from the IDF directory.
+read-otadata                 # Read otadata partition.
+reconfigure                  # Re-run CMake.
+save-defconfig               # Generate a sdkconfig.defaults with options different from the default ones.
+set-target                   # Set the chip target to build.
+show-efuse-table             # Print eFuse table.
+size                         # Print basic size information about the app.
+size-components              # Print per-component size information.
+size-files                   # Print per-source-file size information.
+uf2                          # Generate the UF2 binary with all the binaries included.
+uf2-app                      # Generate an UF2 binary for the application only.

@@ -1,0 +1,119 @@
+Short-cute VimsCode : 
+<F2> launch a vim note
+<F3> launch the folder tree where you are
+<F4> launch the change history
+<F5> launch a terminal at the bottom
+<F6> scroll through terminal 
+<F7> launch a help site for vim and terminal
+<F8> created a new vim tab 
+<F9> navigates between vim tabs
+
+Help for arduino:
+
+arduino-cli board                       # Displays the arduino controls
+									attach                # Attach a project to a map
+									details   						# Displays details on the map
+									list   								# Lists the connected cards
+									listall   						# Lists all known maps and their FQBN correspondence
+									search   							# Search the map in the map getionaires
+
+arduino-cli burn-bootloader   					# Downloads the bootloader
+
+arduino-cli cache clean   							# Clear cache
+
+arduino-cli compile   									# Compiles the program on the board
+
+arduino-cli config   										# Allows to have the arduino configuration controls
+									 add   								# Adds another value to a setting
+									 delete  						  # Deletes a parameter and these sub-parameters
+									 dump   							# Displays current settings
+									 init   							# Creates a project
+									 remove   						# Removes one or more values from a parameter
+									 set   								# Sets a value to a parameter
+
+arduino-cli core   											# Allows operations on the arduino heart
+								 download  						  # Download one or more hearts and all dependent tools
+								 install   							# Installs one or more cores and all dependent tools
+								 list   								# Displays the list of installed platforms
+								 search   							# Look for a heart in the card manager
+								 uninstall   						# Uninstall one or more cores and all dependent tools
+								 update-index   				# Updates the heart index
+								 upgrade   							# Updates one or more platforms
+arduino-cli debug   										# Allows debug
+
+arduino-cli help   											# Displays arduino help
+
+arduino-cli lib   											# Allows to display the list of apropos library commands
+								deps   									# Looks at the status of a dependency for a specific library
+								download   							# Download one or more libraries without installing it
+								examples   							# Displays library examples
+								install   							# Install one or more libraries in the system
+								list   									# Displays installed libraries
+								search   								# Search for one or more library data
+								uninstall   						# Uninstall one or more libraries
+								update-index   					# Updates the library index
+								upgrade   							# Updates all installed libraries
+
+arduino-cli monitor   									# Opens a communication port with card
+arduino-cli monitor -p /dev/ttyaCM0 --describe   		# Example
+										--board-options strings  		 		# Lists options
+								    --config strings or -c   				# Configure a port
+										--describe   										# Displays all communication port settings
+										--discovery-timeout "duration"  # Lets you choose the time to discover a port
+										--fqbn string or -b   					# Change the card name
+										--help or -h   									# Display help
+										--port string or -p   					# Change port address
+										--protocol string or -l   			# Change protocol
+										--quiet or -q  								  # Displays only input and output monitor
+arduino-cli outdated  									# Lists hearts and libraries that can be updated
+
+arduino-cli sketch   										# Create/archive an arduino project
+									 archive   						# Create a project archive
+									 new   								# Create a new project
+
+arduino-cli update   										# Updates the index of hearts and libraries
+
+arduino-cli upgrade   									# Updates installed cores and libraries
+
+arduino-cli upload   										# Download an arduino project
+
+arduino-cli version   									# Displays the arduino-cli version
+
+
+
+
+Valid additional arguments for all commands above:
+
+      --config-file string   						# Allows you to choose a custom configuration file
+      --format string  								  # Lets you choose the format to output logs
+      --log-file string   							# Lets you choose where the logs are stored
+      --verbose or -v   								# Provides more information
+
+Example of simple use: 
+
+# To connect new indexes download
+
+arduino-cli core update-index
+
+# To list all connected boards
+
+arduino-cli board list
+
+# To install a core, an example with samd but you can do it with avr (to know how to look at the FQBN of the card)
+
+arduino-cli core install arduino:samd
+
+# To see the installed cores
+
+ arduino-cli core list
+
+# To compile
+
+arduino-cli compile --fqbn "FQBN of the card" "file name"
+arduino-cli compile --fqbn arduino:samd:mkr1000 MyFirstSketch   # Example
+
+# To upload
+
+arduino-cli upload -p/dev/ttyACM0 --fqbn "FQBN of the card" "file name"
+                          ttyUSB0
+
