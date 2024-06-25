@@ -1,3 +1,10 @@
+
+<div align="center">
+
+![Vimscode](https://git.cohabit.fr/bastien/VimsCode/raw/branch/master/pictures/vimscode.jpg)
+
+</div>
+
 ## Table of Contents
 
 - [Why VimsCode](#why-vimscode)
