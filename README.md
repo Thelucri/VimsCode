@@ -94,16 +94,7 @@ Launch `vim` and run `:PluginInstall`
 This short-cute are totally switchable in .vimrc.
 
 ```
-"F2" Shows a vim note
-"F3" Shows the tree structure
-"F4" Shows the history of changes made
-"F5" Shows a terminal at the bottom
-"F6" Allows scrolling in the terminal
-"F7" Brings up a help site for vim and terminal
-"F8" created a new vim tab
-"F9" navigate between vim tabs
-"c-s" vertical split of the window
-"F10" "F10" close vimscode 
+"Ctrl + l" Show all shortcut
 ```
 
 * Shortcut in visual mode, when you highlight a word, do a duckduckgo search, on press "g".
